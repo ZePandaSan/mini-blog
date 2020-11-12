@@ -1,5 +1,10 @@
 # mini-blog 
 
+## Fonctionnement 
+1) Se placer dans `server`
+2) Taper `node htmlFile.js`
+3) Sur votre navigateur entrez l'url : `http://localhost:8000` 
+
 ## Serveur 
 Génère le fichier `index.html`
 ```javascript
