@@ -30,6 +30,6 @@
 - [ ] isAdmin 
 - [ ] isBanned 
 
-
+Problème : Gestion des commentaires (pas lié à l'article sur l'interface web)
   
   
