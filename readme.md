@@ -5,7 +5,7 @@
 #### CRUD 
 - [x] Create
 - [x] Read
-- [ ] Update 
+- [x] Update 
 - [x] Delete
 #### Forme 
 - [x] Titre
@@ -17,7 +17,7 @@
 #### CRUD 
 - [x] Create
 - [x] Read
-- [ ] Update 
+- [x] Update 
 - [x] Delete
 #### Forme 
 - [x] Titre
@@ -30,6 +30,6 @@
 - [ ] isAdmin 
 - [ ] isBanned 
 
-Problème : Gestion des commentaires (pas lié à l'article sur l'interface web)
+Problème :Pas article + commentaire mais plutôt discussion
   
   
