@@ -6,7 +6,7 @@
 - [x] Create
 - [x] Read
 - [ ] Update 
-- [ ] Delete
+- [x] Delete
 #### Forme 
 - [x] Titre
 - [x] Contenu 
@@ -18,7 +18,7 @@
 - [x] Create
 - [x] Read
 - [ ] Update 
-- [ ] Delete
+- [x] Delete
 #### Forme 
 - [x] Titre
 - [x] Contenu 
