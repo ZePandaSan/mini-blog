@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include_once 'function/function.php';
 include_once 'function/inscription.class.php';
 $bdd = bdd();
@@ -23,20 +23,31 @@ if(isset($_POST['pseudo']) AND isset($_POST['email']) AND isset($_POST['mdp'])  
 }
 ?>
 <!DOCTYPE html>
+<html>
 <head>
-    <meta charset='utf-8' />
-    <title>Blog</title>
-    
-    <meta name="authors" content="Wassim Saidane and Aurélien Authier"> 
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-<head>
+<title>S'inscrire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Custom Theme files -->
+<link href="css/formulaire.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
 <body>
- <h1>Inscription</h1>
-    
-            <div id="Cforum">
-                <form method="post" action="inscription.php">
+    <!-- main -->
+<header>
+	    <ul class="main-nav">
+		    <a href="connexion.php">Se connecter</a>
+            <a href="inscription.php">S'inscrire</a>
+            <a href="index.php">Home</a>
+	    </ul>
+    </header>
+		<h1>Inscription</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form method="post" action="inscription.php">
                     <p>
                         <input name="pseudo" type="text" placeholder="Pseudo..." required /><br>
                         <input name="email" type="text" placeholder="Adresse email..." required /><br>
@@ -50,7 +61,21 @@ if(isset($_POST['pseudo']) AND isset($_POST['email']) AND isset($_POST['mdp'])  
                         ?>
                     </p>
                 </form> 
-                
-            </div>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
 </body>
 </html>

@@ -1,0 +1,262 @@
+body{
+    background-color : #76b852; 
+    margin : 0; 
+    padding: 0; 
+    font-family: "Karla","Arial"; 
+    font-size : 14px; 
+    color : black;  
+}
+
+footer, nav, section, article, aside{
+    display:block; 
+    width: auto; 
+    height: auto; 
+}
+
+header {
+	padding: 5px;
+	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+
+ul,li,h1,h2,h3,h4,h5,h6,span,p{
+    padding: 0; 
+    margin: 0;
+}
+
+a{ 
+    text-decoration:none; 
+    color : blue;
+}
+
+h1{
+    font-size: 25px; 
+    color: black; 
+    text-align: center; 
+    margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#Cforum{
+    width: 50%; 
+    min-height: 300px; 
+    padding: 10px; 
+    margin: auto; 
+    margin-top: 20px; 
+    background-color: white; 
+    border:  1px solid #76b852;
+}
+#rep{
+    width: 780px; 
+    min-height: 300px; 
+    padding: 10px; 
+    margin: auto; 
+    margin-top: 20px; 
+}
+
+
+.categories {
+    width: 700px; 
+    margin: auto; 
+    background-color: #76b852; 
+    height: 50px; 
+    line-height: 50px; 
+    margin-top: 20px; 
+    padding: 10px;  
+}
+.post{
+    background-color: #76b852; 
+    margin: auto; 
+    margin-top: 10px;
+    min-height: 200px; 
+    width: 50%; 
+    padding: 10px; 
+}
+
+.main-nav {
+	list-style-type: none;
+	display: flex;
+	flex-basis: 60%;
+}
+
+.main-nav li {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.main-nav a:link,
+.main-nav a:visited {
+	padding-left: 10px;
+	text-decoration: none;
+	color: #000;
+}
+
+.main-nav a:hover,
+.main-nav a:active {
+	text-decoration: none;
+	color: #444;
+}
+
+.main-nav li:first-child a,
+.main-nav li:first-child a {
+	font-weight: bold;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.colorlib-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.colorlib-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  bottom: -160px;
+  -webkit-animation: square 20s infinite;
+  -moz-animation: square 250s infinite;
+  -o-animation: square 20s infinite;
+  -ms-animation: square 20s infinite;
+  animation: square 20s infinite;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  -ms-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.colorlib-bubbles li:nth-child(1) {
+  left: 10%;
+}
+
+.colorlib-bubbles li:nth-child(2) {
+  left: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  -o-animation-delay: 2s;
+  -ms-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-duration: 17s;
+  -moz-animation-duration: 17s;
+  -o-animation-duration: 17s;
+  animation-duration: 17s;
+}
+
+.colorlib-bubbles li:nth-child(3) {
+  left: 25%;
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  -o-animation-delay: 4s;
+  -ms-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+.colorlib-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-duration: 22s;
+  -moz-animation-duration: 22s;
+  -o-animation-duration: 22s;
+  -ms-animation-duration: 22s;
+  animation-duration: 22s;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.colorlib-bubbles li:nth-child(5) {
+  left: 70%;
+}
+
+.colorlib-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+  -o-animation-delay: 3s;
+  -ms-animation-delay: 3s;
+  animation-delay: 3s;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.colorlib-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 7s;
+  -moz-animation-delay: 7s;
+  -o-animation-delay: 7s;
+  -ms-animation-delay: 7s;
+  animation-delay: 7s;
+}
+
+.colorlib-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 15s;
+  -moz-animation-delay: 15s;
+  animation-delay: 15s;
+  -webkit-animation-duration: 40s;
+  -moz-animation-duration: 40s;
+  animation-duration: 40s;
+}
+
+.colorlib-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-duration: 40s;
+  animation-duration: 40s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.colorlib-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 11s;
+  animation-delay: 11s;
+}
+

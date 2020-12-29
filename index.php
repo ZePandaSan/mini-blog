@@ -47,15 +47,16 @@ else {
     <meta charset='utf-8' />
     <title>Blog</title>
     
-    <meta name="author" content="Wassim Saidane and"> 
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 <head>
 <body>
-<a href="connexion.php">Se connecter</a>
-<a href="inscription.php">S'inscrire</a>
-<a href="index.php">Home</a>
+    <header>
+	    <ul class="main-nav">
+		    <a href="connexion.php">Se connecter</a>
+            <a href="inscription.php">S'inscrire</a>
+            <a href="index.php">Home</a>
+	    </ul>
+    </header>
  <h1>Bienvenue sur le blog</h1>
     
             <div id="Cforum">
@@ -108,7 +109,7 @@ else {
                 $requete->execute(array('sujet'=>$_GET['sujet']));
                 while($reponse = $requete->fetch()){
                     ?>
-                <div class="post">
+                <div class="Cforum">
                     
                     <?php 
                      $requete2 = $bdd->prepare('SELECT * FROM membres WHERE id = :id');
@@ -128,17 +129,7 @@ else {
                 }
                 else { 
                 ?>
-                    <form method="post" action="index.php?sujet=<?php echo $_GET['sujet']; ?>">
-                        <textarea name="sujet" placeholder="Votre message..." ></textarea>
-                        <input type="hidden" name="name" value="<?php echo $_GET['sujet']; ?>" />
-                        <input type="submit" value="Répondre" />
-                    </form>
-                        <?php 
-                        if(isset($erreur)){
-                            echo $erreur;
-                        }
-                        //header('Location: index.php');
-                        ?>
+                    
                         <?php
                         //echo $_GET['sujet'];
                         //echo $_GET['sujet'];
@@ -147,11 +138,13 @@ else {
                         <?php
                         if ($_SESSION['id']==$reponse['propri']) { 
                         ?>
-                        <a href="delete.php?id=<?php echo $reponse['id']; ?>">Supprimer</a>
+                        
                         <form method="post" action="update.php?id=<?php echo $reponse['id']; ?>">
-                            <textarea name="contenu" placeholder=<?php echo $reponse['contenu'];?> ></textarea>
-                            <button type="submit">Modifier</button>
+                            <textarea name="contenu" placeholder="Modifier le commentaire..." ></textarea>
+                            <button id="modif" type="submit">Modifier</button>
+                            <a id="supr" href="delete.php?id=<?php echo $reponse['id']; ?>">Supprimer</a>
                         </form>
+                        
                         
                         <?php
                         }
@@ -167,7 +160,19 @@ else {
                 }
                 
                 ?>
-                
+                <form id="rep" method="post" action="index.php?sujet=<?php echo $_GET['sujet']; ?>">
+                        <textarea name="sujet" placeholder="Votre message..." ></textarea>
+                        <input type="hidden" name="name" value="<?php echo $_GET['sujet']; ?>" />
+                        <input type="submit" value="Répondre" />
+
+                        
+                    </form>
+                        <?php 
+                        if(isset($erreur)){
+                            echo $erreur;
+                        }
+                        //header('Location: index.php');
+                        ?>
                 <?php
                 }
                 else { /*Si on est sur la page normal*/
@@ -192,6 +197,18 @@ else {
                 
                 
             </div>
+            <ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
 </body>
 </html>
 
