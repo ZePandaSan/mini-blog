@@ -1,7 +1,6 @@
 <?php session_start();
 include_once 'function/function.php';
 include_once 'function/addPost.class.php';
-include_once 'function/delete.class.php';
 $bdd = bdd();
 
 if(isset($_POST['name']) AND isset($_POST['sujet'])){
@@ -47,7 +46,7 @@ else {
     <meta charset='utf-8' />
     <title>Blog</title>
     
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
 <head>
 <body>
     <header>
@@ -109,7 +108,7 @@ else {
                 $requete->execute(array('sujet'=>$_GET['sujet']));
                 while($reponse = $requete->fetch()){
                     ?>
-                <div class="Cforum">
+                <div class="article">
                     
                     <?php 
                      $requete2 = $bdd->prepare('SELECT * FROM membres WHERE id = :id');
@@ -136,7 +135,18 @@ else {
                         //echo $_GET[$reponse['id']];
                         ?>
                         <?php
-                        if ($_SESSION['id']==$reponse['propri']) { 
+                        //echo $_SESSION['id'];
+                        $requete3 = $bdd->prepare('SELECT isAdmin, isBanned FROM membres WHERE id = :id');
+                        $requete3->execute(array('id'=>$_SESSION['id']));
+                        $myId=$requete3->fetch();
+                        /*echo $myId[0];
+                        if ($myId[0]==1){
+                            echo 'test 1';
+                        }
+                        else {
+                            echo 'test 0';
+                        }*/
+                        if (($_SESSION['id']==$reponse['propri'] or $myId[0]==1)) { 
                         ?>
                         
                         <form method="post" action="update.php?id=<?php echo $reponse['id']; ?>">
@@ -147,6 +157,7 @@ else {
                         
                         
                         <?php
+                        
                         }
                         ?>
                     
@@ -158,22 +169,23 @@ else {
                 <?php
                    
                 }
-                
-                ?>
-                <form id="rep" method="post" action="index.php?sujet=<?php echo $_GET['sujet']; ?>">
-                        <textarea name="sujet" placeholder="Votre message..." ></textarea>
-                        <input type="hidden" name="name" value="<?php echo $_GET['sujet']; ?>" />
-                        <input type="submit" value="Répondre" />
+                if ($myId[1]==0){
+                    ?>
+                        <form id="rep" method="post" action="index.php?sujet=<?php echo $_GET['sujet']; ?>">
+                            <textarea name="sujet" placeholder="Votre réponse..." ></textarea>
+                            <input type="hidden" name="name" value="<?php echo $_GET['sujet']; ?>" />
+                            <input type="submit" value="Répondre" />
 
                         
-                    </form>
-                        <?php 
-                        if(isset($erreur)){
+                        </form>
+                            <?php 
+                            if(isset($erreur)){
                             echo $erreur;
-                        }
+                            }
                         //header('Location: index.php');
-                        ?>
-                <?php
+                            ?>
+                    <?php
+                    }
                 }
                 else { /*Si on est sur la page normal*/
                     

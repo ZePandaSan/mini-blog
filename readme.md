@@ -27,8 +27,8 @@
 #### Gestion des utilisateur
 - [x] Nom 
 - [x] Mot de passe 
-- [x] isAdmin 
-- [x] isBanned 
+- [ ] isAdmin 
+- [ ] isBanned 
 
 Problème :Pas article + commentaire mais plutôt discussion
   
