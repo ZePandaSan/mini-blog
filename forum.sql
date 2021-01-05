@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 19 déc. 2020 à 12:18
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Généré le : mar. 05 jan. 2021 à 10:30
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `forum`
+-- Base de données : `forum`
 --
 
 -- --------------------------------------------------------
@@ -55,16 +54,19 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `pseudo` varchar(21) NOT NULL,
   `email` varchar(60) NOT NULL,
   `mdp` varchar(21) NOT NULL,
+  `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `isBanned` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `pseudo`, `email`, `mdp`) VALUES
-(3, 'wassim', 'wassim@mail.com', 'wassim'),
-(4, 'TheScanReader', 'TheScanReader@mail.com', 'TheScanReader');
+INSERT INTO `membres` (`id`, `pseudo`, `email`, `mdp`, `isAdmin`, `isBanned`) VALUES
+(3, 'wassim', 'wassim@mail.com', 'wassim', 0, 0),
+(4, 'TheScanReader', 'TheScanReader@mail.com', 'TheScanReader', 0, 1),
+(5, 'Administrateur', 'Administrateur@mail.com', 'Administrateur', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -80,14 +82,15 @@ CREATE TABLE IF NOT EXISTS `postsujet` (
   `date` datetime NOT NULL,
   `sujet` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `postsujet`
 --
 
 INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
-(13, 3, 'La saison 4 a dÃ©buter', '2020-12-19 12:12:54', 'Shingeki no kyojin : Saison 4');
+(13, 3, 'La saison 4 a dÃ©buter', '2020-12-19 12:12:54', 'Shingeki no kyojin : Saison 4'),
+(22, 3, 'oui', '2021-01-05 10:42:44', 'Shingeki no kyojin : Saison 4');
 
 -- --------------------------------------------------------
 
