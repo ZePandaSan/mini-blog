@@ -1,0 +1,236 @@
+%pdflatex -halt-on-error -aux-directory=tmp -output-directory=tmp rapport.tex%
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[francais]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=php,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Rapport sur le projet de Technologie - Web/Serveur}
+\author{Wassim Saidane, Aurélien Authier}
+\date{}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \tableofcontents
+    \newpage
+    \pagenumbering{arabic}
+    \section*{Introduction}
+    %A compléter 
+    \section{Technologies utilisés}
+    Pour ce projet, nous avons utilisé le language de programation PHP, 
+    nous avons choisis PHP car c'était le language le plus répendu,
+    PHP est également facile à utilisé car on peut y inclure du HTML. On peut
+    donc coder sans ce soucier d'aspect technique coté serveur. Un de nous deux 
+    connaissait déjà ce language. \\
+    Nous utilisé une base de donnée mySQL, le language nous avait été ensseigner en L2.
+    Une autre raison est l'utilisation d'un serveur appache (plus simple pour nous qui codons sur Windows),
+    pour le PHP, nous avons donc utilisé phpMyAdmin via WampServeur. Tous ces outils fonctionnent bien ensemble,
+    et nous ont permis de gagner du temps sur des aspects techniques (serveur) que nous ne maitrisons pas encore bien.
+
+    \section{Comment lancer notre code ?}
+    Nous avons fait un mode d'emploi (... .pdf) explicant comment on lance le code.
+    \section{La base de données}
+    Avant de coder quoi que soit, nous nous sommes d'abord intéresser au contenu de la base de données.
+    Nous avons ainsi créer quatre tables sur phpMyAdmin.
+    \subsection{categories}
+    Il s'agit d'un ajout (par rapport au sujet initial) de notre part. 
+    L'utilisateur choisis la catégorie en rapport avec son article. \\
+    La table est composé dans son état actuel de deux champs : \\
+    - id \\
+    - name \\
+    \\
+    On a deux catégories \footnote{On peut imaginer qu'un administrateur ou même un utilisateur créé des catégories selon son envie}
+    \newpage
+    \subsection{membres}
+    Ici sera stocké les données des utilisateurs qui ce seront inscrit. On a six champs : \\
+    - id \\ 
+    - pseudo \\ 
+    - email \\
+    - mdp \\ 
+    - isAdmin \footnote{binaire même si dans les faits il s'agit d'un entier}  \\
+    - isBanned \footnotemark[2] \\ 
+    \subsection{sujet}
+    Nous avons décider de marquer une petite différence avec l'énoncé (par facilité),
+    au lieu d'avoir des articles et des commentaires classiques, nous avons des sujets et une discussion sous chaque sujets.
+    D'un point de vu utilisateur celà ne change rien. \\ 
+    On a trois champs : \\
+    - id \\
+    - name \\ 
+    - categorie 
+    \subsection{postSujet}
+    Il s'agit de la discussion dont nous avons parler précédement. On a cinq champs : \\
+    - id \\ 
+    - propri \footnote{L'identifiant de celui qui à créer le commentaire} \\
+    - contenu \\ 
+    - date \\
+    - sujet \\ 
+    \newpage 
+    \section{Le code}
+    Nous avons divisé le code en trois, un repértoire css pour le style, un répertoire pour les fonctions et le reste. 
+    \subsection{L'inscription}
+    Le fichier inscription.php va utiliser un formulaire HTML classique qui va appeler inscription.class.php dans le repértoire fonction. \\
+    \underline{Extrait de inscription.php :} 
+    \begin{lstlisting}
+        <form method="post" action="inscription.php">
+            <p>
+                <input name="pseudo" type="text" placeholder="Pseudo..." required /><br>
+                <input name="email" type="text" placeholder="Adresse email..." required /><br>
+                <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
+                <input name="mdp2" type="password" placeholder="Confirmation..." required /><br>
+                <input type="submit" value="S'inscrire!" />
+                <?php 
+                    if(isset($erreur)){
+                        echo $erreur;
+                    }
+                ?>
+            </p>
+        </form>
+    \end{lstlisting}
+    Ansi toutes les données entrées vont être récupéré dans le constructeur de la classe. \\
+    \underline{Extrait de inscription.class.php :}
+    \begin{lstlisting}
+        class inscription{
+    
+            private $pseudo;
+            private $email;
+            private $mdp;
+            private $mdp2;
+            private $bdd;
+    
+        public function __construct($pseudo,$email,$mdp,$mdp2){
+    
+            $pseudo = htmlspecialchars($pseudo);
+            $email = htmlspecialchars($email);
+        
+            $this->pseudo = $pseudo; 
+            $this->email = $email;
+            $this->mdp = $mdp;
+            $this->mdp2 = $mdp2;
+            $this->bdd = bdd();
+        
+        }
+    \end{lstlisting}
+    Ensuite nous allons faire des requetes SQL pour entrer les données dans la BDD et faire une session active. 
+    \\ \underline{Extrait de inscription.class.php :}
+    \begin{lstlisting}
+        public function enregistrement(){
+        
+        $requete = $this->bdd->prepare('INSERT INTO membres(pseudo,email,mdp) VALUES(:pseudo,:email,:mdp)');
+        $requete->execute(array(
+            'pseudo'=>  $this->pseudo,
+            'email' => $this->email,
+            'mdp' => $this->mdp 
+        ));
+        
+        return 1; 
+       
+    }
+    
+    public function session(){
+        $requete = $this->bdd->prepare('SELECT id FROM membres WHERE pseudo = :pseudo ');
+        $requete->execute(array('pseudo'=>  $this->pseudo));
+        $requete = $requete->fetch();
+        $_SESSION['id'] = $requete['id'];
+        $_SESSION['pseudo'] = $this->pseudo;
+        
+        return 1;
+    }
+    \end{lstlisting}
+    \newpage
+    \subsection{La connexion et la deconnexion}
+    Pour la connexion le procéder est similaire, la seule différence réside dans le fait que nous entrons pas de valeur dans la base de données mais nous faisons qu'une vérification. \\
+    \underline{Extrait de connexion.class.php :}
+    \begin{lstlisting}
+        public function verif(){
+        
+        $requete = $this->bdd->prepare('SELECT * FROM membres WHERE pseudo = :pseudo');
+        $requete->execute(array('pseudo'=> $this->pseudo));
+        $reponse = $requete->fetch();
+        if($reponse){
+            
+            if($this->mdp == $reponse['mdp']){
+                return 'ok';
+            }
+            else {
+                $erreur = 'Le mot de passe est incorrect';
+                return $erreur;
+            }
+            
+            
+        }
+        else {
+            $erreur = 'Le pseudo est inexistant';
+            return $erreur;
+         }
+        
+        
+    }
+    \end{lstlisting} 
+    Pour la déconnexion on détruit juste la session active. 
+    \subsection{Ajouter un sujet et une discussion}
+    \newpage
+    De la même façon un formulaire est utilisé et les données sont transportées. 
+    \underline{Extrait de addSujet.class.php :}
+    \begin{lstlisting}
+        public function insert(){
+        echo $this->categorie;
+        $requete = $this->bdd->prepare('INSERT INTO sujet(name,categorie) VALUES(:name,:categorie)');
+        $requete->execute(array(
+            'name'=> $this->name,
+            'categorie'=>  $this->categorie
+        ));
+        
+        $requete2 = $this->bdd->prepare('INSERT INTO postSujet(propri,contenu,date,sujet) VALUES(:propri,:contenu,NOW(),:sujet)');
+        $requete2->execute(array('propri'=>$_SESSION['id'],'contenu'=>  $this->sujet,'sujet'=>  $this->name));
+        
+        return 1;
+    }
+    \end{lstlisting}
+    Même procédé pour la discussion.
+    \subsection{Modifier et supprimer}
+    Pour supprimer on va utiliser un bouton et la requête tiens en quelques lignes. 
+    \\
+    \underline{delete.php :}\footnote{On a pas utilisé de fonction/class par manque de temps}
+    \begin{lstlisting}
+        $requete = $bdd->prepare('DELETE FROM postSujet WHERE id = '.$id);
+    \end{lstlisting}
+    Pour modifier le procéder et le même, on utilise une textarea pour transporter la modification. 
+    \subsection{Administrateur et bannis}
+    Ce point de code n'est malheureusement pas otpimale, nous avons juste mis une visibilité totale pour l'administrateur
+    en jouant avec les if. \footnote{Il aurait fallu utiliser un modéle vue-controleur}
+    \newpage
+    \subsection*{Conclusion}
+\end{document}
