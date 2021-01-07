@@ -1,6 +1,6 @@
 # mini-blog 
 
-## Etape 
+## TODO
 ### articles 
 #### CRUD 
 - [x] Create
