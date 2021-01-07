@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 05 jan. 2021 à 10:30
+-- Généré le : jeu. 07 jan. 2021 à 10:24
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `postsujet` (
   `date` datetime NOT NULL,
   `sujet` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `postsujet`
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `postsujet` (
 
 INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
 (13, 3, 'La saison 4 a dÃ©buter', '2020-12-19 12:12:54', 'Shingeki no kyojin : Saison 4'),
-(22, 3, 'oui', '2021-01-05 10:42:44', 'Shingeki no kyojin : Saison 4');
+(24, 4, 'oui', '2021-01-07 10:06:24', 'Shingeki no kyojin : Saison 4');
 
 -- --------------------------------------------------------
 
