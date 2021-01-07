@@ -169,7 +169,8 @@ else {
                 <?php
                    
                 }
-                if ($myId[1]==0){
+                
+                
                     ?>
                         <form id="rep" method="post" action="index.php?sujet=<?php echo $_GET['sujet']; ?>">
                             <textarea name="sujet" placeholder="Votre réponse..." ></textarea>
@@ -186,7 +187,7 @@ else {
                             ?>
                     <?php
                     }
-                }
+                
                 else { /*Si on est sur la page normal*/
                     
                        
