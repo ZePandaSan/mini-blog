@@ -65,8 +65,8 @@
     Le code devrait fonctionner sous n'importe quel serveur appache et sur phpMyAdmin. Si celà ne fonctionne pas nous avons fait une fiche readme (Markdown, html et pdf) avec quelques ressources.
     Si les problèmes perssistent vous pouvez nous contacter.
     \section{La base de données}
-    Avant de coder quoi que soit, nous nous sommes d'abord intéresser au contenu de la base de données.
-    Nous avons ainsi créer quatre tables sur phpMyAdmin.
+    Avant de coder quoi que soit, nous nous sommes d'abord intéressé au contenu de la base de données.
+    Nous avons ainsi créé quatre tables sur phpMyAdmin.
     \subsection{categories}
     Il s'agit d'un ajout (par rapport au sujet initial) de notre part. 
     L'utilisateur choisis la catégorie en rapport avec son article. \\
@@ -77,7 +77,7 @@
     On a deux catégories \footnote{On peut imaginer qu'un administrateur ou même un utilisateur créé des catégories selon son envie}
     \newpage
     \subsection{membres}
-    Ici sera stocké les données des utilisateurs qui ce seront inscrit. On a six champs : \\
+    Ici seront stockées les données des utilisateurs qui se seront inscrit. On a six champs : \\
     - id \\ 
     - pseudo \\ 
     - email \\
@@ -103,7 +103,7 @@
     \section{Le code}
     Nous avons divisé le code en trois, un repértoire css pour le style, un répertoire pour les fonctions et le reste. 
     \subsection{L'inscription}
-    Le fichier inscription.php va utiliser un formulaire HTML classique qui va appeler inscription.class.php dans le repértoire fonction. \\
+    Le fichier inscription.php va utiliser un formulaire HTML classique qui va appeler inscription.class.php dans le répertoire fonction. \\
     \underline{Extrait de inscription.php :} 
     \begin{lstlisting}
         <form method="post" action="inscription.php">
@@ -121,7 +121,7 @@
             </p>
         </form>
     \end{lstlisting}
-    Ansi toutes les données entrées vont être récupérées dans le constructeur de la classe. \\
+    Ainsi toutes les données entrées vont être récupérées dans le constructeur de la classe. \\
     \underline{Extrait de inscription.class.php :}
     \begin{lstlisting}
         class inscription{
@@ -145,7 +145,7 @@
         
         }
     \end{lstlisting}
-    Ensuite nous allons faire des requetes SQL pour entrer les données dans la BDD et faire une session active. 
+    Ensuite nous allons faire des requetes SQL pour entrer les données dans la base de dpnnées et faire une session active. 
     \\ \underline{Extrait de inscription.class.php :}
     \begin{lstlisting}
         public function enregistrement(){
@@ -173,7 +173,7 @@
     \end{lstlisting}
     \newpage
     \subsection{La connexion et la deconnexion}
-    Pour la connexion le procéder est similaire, la seule différence réside dans le fait que nous n'entrons pas de valeur dans la base de données mais nous ne faisons qu'une vérification. \\
+    Pour la connexion le procédé est similaire, la seule différence réside dans le fait que nous n'entrons pas de valeur dans la base de données mais nous ne faisons qu'une vérification. \\
     \underline{Extrait de connexion.class.php :}
     \begin{lstlisting}
         public function verif(){
@@ -204,8 +204,7 @@
     Pour la déconnexion on détruit juste la session active. 
     \newpage
     \subsection{Ajouter un sujet et une discussion}
-    
-    De la même façon un formulaire est utilisé et les données sont transportées. 
+        De la même façon un formulaire est utilisé et les données sont transportées. 
     \underline{Extrait de addSujet.class.php :}
     \begin{lstlisting}
         public function insert(){
@@ -222,20 +221,20 @@
         return 1;
     }
     \end{lstlisting}
-    Même procéder pour la discussion.
+    Même procédé pour la discussion.
     \subsection{Modifier et supprimer}
-    Pour supprimer on va utiliser un bouton et la requête tiens en quelques lignes. 
+    Pour supprimer nous allons utiliser un bouton et la requête tiens en quelques lignes. 
     \\
-    \underline{delete.php :}\footnote{On a pas utilisé de fonction/class par manque de temps}
+    \underline{delete.php :}\footnote{Nous n'avons pas utilisé de fonction/class par manque de temps}
     \begin{lstlisting}
         $requete = $bdd->prepare('DELETE FROM postSujet WHERE id = '.$id);
     \end{lstlisting}
-    Pour modifier le message, le procéder est le même, on utilise une textarea pour transporter la modification. 
+    Pour modifier le message, le procédé est le même, on utilise une textarea pour transporter la modification. 
     \subsection{Administrateur et bannis}
     Ce point de code n'est malheureusement pas optimal, nous avons juste mis une visibilité totale pour l'administrateur
     en jouant avec les if. \footnote{Il aurait fallu utiliser un modéle vue-controleur}
     \newpage
     \subsection*{Conclusion}
-    Ce projet nous demandais de réaliser un mini-blog pour cela nous avons utilisé PHP, mySQL, Appache et WampServer. Cependant, par manque de temps certains points n'ont pas pu être fini, comme la gestion de l'administration et l'UI/UX de notre site, ce qui donne un résultat, un peu austère. Nous avions cependant réalisé le plus important, la base technique, un delai un tout petit peu plus long aurait suffit pour finir le projet.
+    Ce projet nous demandait de réaliser un mini-blog pour cela nous avons utilisé PHP, mySQL, Appache et WampServer. Cependant, par manque de temps certains points n'ont pas pu être fini, comme la gestion de l'administration et l'UI/UX de notre site, ce qui donne un résultat un peu austère. Nous avions cependant réalisé le plus important, la base technique, un delai un tout petit peu plus long aurait suffit pour finir le projet.
 
 \end{document}
