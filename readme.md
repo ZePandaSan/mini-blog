@@ -10,7 +10,7 @@
   - [Inclure la base de donnée](#inclure-la-base-de-donnée)
 
 # mini-blog 
-Trois repértoires : 
+Trois répertoires : 
 - Code 
 - Rapport 
 - BDD
@@ -24,7 +24,7 @@ Installer WampServer : https://alcatiz.developpez.com/tutoriel/installer-wamp-wi
 Installer Mamp : https://apprendre-php.com/tutoriels/tutoriel-24-installation-et-prise-en-main-de-mamp.html 
 
 ## Placer le projet
-Placer le contenu du repértoire Code dans : 
+Placer le contenu du répertoire Code dans : 
 `/var/www/html` : Pour Linux
 `\wamp64\www\` : Pour Windows 
 `/htdocs` : Pour MAC OS 
@@ -33,12 +33,12 @@ Placer le contenu du repértoire Code dans :
 ### Linux : 
 http://elisabeth.pointal.org/doc/code/server/lamp/creer_des_virtualhosts
 ### Windows 
-Allez sur votre navigateur est taper : `localhost`
+Allez sur votre navigateur et tapez : `localhost`
 Cliquez sur `Ajouter un Virtual Host` dans `outil`
-Entrez le chemain du projet. 
+Entrez le chemin du projet. 
 
 ## Inclure la base de donnée 
-Ouvrez phpMyAdmin allez dans importer et placez y le contenu du repértoire `BDD`
+Ouvrez phpMyAdmin allez dans importer et placez y le contenu du répertoire `BDD`
 
 
 
