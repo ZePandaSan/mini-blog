@@ -48,20 +48,22 @@
     \newpage
     \pagenumbering{arabic}
     \section*{Introduction}
-    %A compléter 
+    Le but de ce projet était de concevoir et coder un mini-blog, avec toutes les fonctionnalités associées (gestion des articles, système de commentaires, gestion des utilisateurs, administration...). Le rapport qui suit va expliquer nos choix de technologies utilisées et comment démarrer le programme.   
+
     \section{Technologies utilisés}
     Pour ce projet, nous avons utilisé le language de programation PHP, 
-    nous avons choisis PHP car c'était le language le plus répendu,
-    PHP est également facile à utilisé car on peut y inclure du HTML. On peut
-    donc coder sans ce soucier d'aspect technique coté serveur. Un de nous deux 
+    nous l'avons choisis car c'était le language le plus répendu,
+    il est également facile à utiliser car on peut y inclure du HTML. On peut
+    donc coder sans ce soucier d'aspect technique coté serveur et un de nous deux 
     connaissait déjà ce language. \\
-    Nous utilisé une base de donnée mySQL, le language nous avait été ensseigner en L2.
+    Nous avons utilisé une base de donnée mySQL, le language nous avait été enseigné en L2.
     Une autre raison est l'utilisation d'un serveur appache (plus simple pour nous qui codons sur Windows),
-    pour le PHP, nous avons donc utilisé phpMyAdmin via WampServeur. Tous ces outils fonctionnent bien ensemble,
+    pour le PHP, nous avons donc utilisé phpMyAdmin via WampServeur. Tous ces outils fonctionnent bien ensembles,
     et nous ont permis de gagner du temps sur des aspects techniques (serveur) que nous ne maitrisons pas encore bien.
 
     \section{Comment lancer notre code ?}
-    Nous avons fait un mode d'emploi (... .pdf) explicant comment on lance le code.
+    Le code devrait fonctionner sous n'importe quel serveur appache et sur phpMyAdmin. Si celà ne fonctionne pas nous avons fait une fiche readme (Markdown, html et pdf) avec quelques ressources.
+    Si les problèmes perssistent vous pouvez nous contacter.
     \section{La base de données}
     Avant de coder quoi que soit, nous nous sommes d'abord intéresser au contenu de la base de données.
     Nous avons ainsi créer quatre tables sur phpMyAdmin.
@@ -83,7 +85,7 @@
     - isAdmin \footnote{binaire même si dans les faits il s'agit d'un entier}  \\
     - isBanned \footnotemark[2] \\ 
     \subsection{sujet}
-    Nous avons décider de marquer une petite différence avec l'énoncé (par facilité),
+    Nous avons décidé de marquer une petite différence avec l'énoncé (par facilité),
     au lieu d'avoir des articles et des commentaires classiques, nous avons des sujets et une discussion sous chaque sujets.
     D'un point de vu utilisateur celà ne change rien. \\ 
     On a trois champs : \\
@@ -119,7 +121,7 @@
             </p>
         </form>
     \end{lstlisting}
-    Ansi toutes les données entrées vont être récupéré dans le constructeur de la classe. \\
+    Ansi toutes les données entrées vont être récupérées dans le constructeur de la classe. \\
     \underline{Extrait de inscription.class.php :}
     \begin{lstlisting}
         class inscription{
@@ -171,7 +173,7 @@
     \end{lstlisting}
     \newpage
     \subsection{La connexion et la deconnexion}
-    Pour la connexion le procéder est similaire, la seule différence réside dans le fait que nous entrons pas de valeur dans la base de données mais nous faisons qu'une vérification. \\
+    Pour la connexion le procéder est similaire, la seule différence réside dans le fait que nous n'entrons pas de valeur dans la base de données mais nous ne faisons qu'une vérification. \\
     \underline{Extrait de connexion.class.php :}
     \begin{lstlisting}
         public function verif(){
@@ -200,8 +202,9 @@
     }
     \end{lstlisting} 
     Pour la déconnexion on détruit juste la session active. 
-    \subsection{Ajouter un sujet et une discussion}
     \newpage
+    \subsection{Ajouter un sujet et une discussion}
+    
     De la même façon un formulaire est utilisé et les données sont transportées. 
     \underline{Extrait de addSujet.class.php :}
     \begin{lstlisting}
@@ -219,7 +222,7 @@
         return 1;
     }
     \end{lstlisting}
-    Même procédé pour la discussion.
+    Même procéder pour la discussion.
     \subsection{Modifier et supprimer}
     Pour supprimer on va utiliser un bouton et la requête tiens en quelques lignes. 
     \\
@@ -227,10 +230,12 @@
     \begin{lstlisting}
         $requete = $bdd->prepare('DELETE FROM postSujet WHERE id = '.$id);
     \end{lstlisting}
-    Pour modifier le procéder et le même, on utilise une textarea pour transporter la modification. 
+    Pour modifier le message, le procéder est le même, on utilise une textarea pour transporter la modification. 
     \subsection{Administrateur et bannis}
-    Ce point de code n'est malheureusement pas otpimale, nous avons juste mis une visibilité totale pour l'administrateur
+    Ce point de code n'est malheureusement pas optimal, nous avons juste mis une visibilité totale pour l'administrateur
     en jouant avec les if. \footnote{Il aurait fallu utiliser un modéle vue-controleur}
     \newpage
     \subsection*{Conclusion}
+    Ce projet nous demandais de réaliser un mini-blog pour cela nous avons utilisé PHP, mySQL, Appache et WampServer. Cependant, par manque de temps certains points n'ont pas pu être fini, comme la gestion de l'administration et l'UI/UX de notre site, ce qui donne un résultat, un peu austère. Nous avions cependant réalisé le plus important, la base technique, un delai un tout petit peu plus long aurait suffit pour finir le projet.
+
 \end{document}
